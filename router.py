@@ -64,6 +64,7 @@ class Vpn(object) :
         ret = self.conn.allocate_eips(bandwidth = self.vpnSetting['bandwidth'], billing_mode=self.vpnSetting['billing_mode'])
 
         return ret['eips'][0]
+
     def releaseEips(self) :
         eip = self.getRouterEipInfo()['eip_id']
         if eip :
@@ -83,9 +84,7 @@ class Vpn(object) :
     def vpnon(self) :
         if not self.isRouterActive() :
             self.poweronRouter() 
-
-        eip = self.allocateEip()
-
+        
         while True :
             if self.isRouterActive() :
                 break
@@ -93,7 +92,10 @@ class Vpn(object) :
                 print "routering is not active yet, wait another 5s"
                 time.sleep(5)
 
-        self.bindEipToRouter(eip)
+        eip = self.getRouterEipInfo()['eip_id']
+        if not eip :
+            eip = self.allocateEip()
+            self.bindEipToRouter(eip)
 
         while True :
             if self.isRouterUpdating() :
