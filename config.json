@@ -1,0 +1,16 @@
+{
+    "key_id":"",
+    "key":"",
+    "router_id":"",
+    "host_name":"qpn.io",
+    "vpn_settings":{
+        "default":{
+            "bandwidth":1,
+            "billing_mode":"bandwidth"
+        },
+        "movie":{
+            "bandwidth":20,
+            "billing_mode":"traffic"
+        }
+    }
+}
