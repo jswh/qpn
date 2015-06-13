@@ -10,7 +10,7 @@ class Vpn(object) :
     conn = None
 
     def __init__(self, vpn = 'default') :
-        if not os.path.exists(self.configFile) :
+        if not os.path.exists(sys.path[0] + '/' + self.configFile) :
             print 'config file is not exits'
             sys.exit()
         else :
