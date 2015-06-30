@@ -1,5 +1,6 @@
 import router
 import sys
+import os
 def printUsage() :
     print 'usage \n vpn on/off [vpn_setting_name] \n sample \n vpn on default'
     sys.exit()
@@ -14,9 +15,11 @@ else :
 v = router.Vpn(setting)
 if action == 'on' :
     v.vpnon()
+    os.system("osascript pptp.applescript")
 elif action == 'off' :
+    os.system("osascript pptp.applescript")
     v.vpnoff()
 else :
     printUsage()
-    
-    
+
+
