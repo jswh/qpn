@@ -13,11 +13,12 @@ if len(sys.argv) > 2 :
 else :
     setting = 'default'
 v = router.Vpn(setting)
+pptpShellCmd = "osascript " + sys.path[0] + '/' + "pptp.applescript"
 if action == 'on' :
     v.vpnon()
-    os.system("osascript pptp.applescript")
+    os.system(pptpShellCmd)
 elif action == 'off' :
-    os.system("osascript pptp.applescript")
+    os.system(pptpShellCmd)
     v.vpnoff()
 else :
     printUsage()
